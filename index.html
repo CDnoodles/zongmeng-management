@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>修仙宗门养成</title>
+<link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+<div id="app">
+  <div id="topbar"></div>
+  <div id="event"></div>
+  <div id="tournament-preview"></div>   <!-- 新增 -->
+  <div id="tournament"></div>
+  <div id="main">
+    <div id="col-left">
+      <div class="panel">
+        <div class="panel-title">宗 主</div>
+        <div id="master"></div>
+      </div>
+      <div class="panel">
+        <div class="sub-tabs" id="main-tabs">
+          <button class="sub-tab active" data-tab="disciples">宗 门 弟 子</button>
+          <button class="sub-tab" data-tab="elders">长 老</button>
+          <button class="sub-tab" data-tab="dungeons">秘 境 派 遣</button>
+          <button class="sub-tab" data-tab="storage">宗 门 仓 库</button>
+          <button class="sub-tab" data-tab="mountain">山 头 仓 库</button>
+        </div>
+        <div id="tab-disciples" class="sub-panel">
+          <div id="disciples"></div>
+        </div>
+        <div id="tab-elders" class="sub-panel hidden">
+          <div id="elders"></div>
+        </div>
+        <div id="tab-dungeons" class="sub-panel hidden">
+          <div id="dungeons"></div>
+        </div>
+        <div id="tab-storage" class="sub-panel hidden">
+          <div id="storage"></div>
+        </div>
+        <div id="tab-mountain" class="sub-panel hidden">
+          <div id="mountain"></div>
+        </div>
+      </div>
+    </div>
+    <div id="col-right">
+      <div class="panel">
+        <div class="panel-title">招 募 候 选</div>
+        <div id="recruits"></div>
+        <button onclick="refreshRecruits(true)" style="width:100%;margin-top:6px;">花 20 灵石刷新</button>
+      </div>
+      <div class="panel">
+        <div class="panel-title">失 踪 弟 子 <span class="count" id="missing-count"></span></div>
+        <div id="missing"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-title">宗 门 日 志</div>
+        <div id="log"></div>
+      </div>
+    </div>
+  </div>
+  <div id="debug"></div>
+  <div id="footer">
+    <button class="btn-gold" onclick="nextMonth()">进入下月</button>
+    <button onclick="toggleDebug()">🔧 调试面板</button>
+    <button class="btn-red" onclick="if(confirm('确定重开？')) newGame()">重开</button>
+  </div>
+</div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

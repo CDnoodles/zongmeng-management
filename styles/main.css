@@ -1,0 +1,475 @@
+/* ==========================================================================
+ * main.css — 全局样式
+ * 由 xiuxiantest.html 拆分而来
+ * ========================================================================== */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: radial-gradient(1200px 600px at 50% -10%, #1a1a26 0%, #12121a 60%);
+  color: #c8c8d4; font-size: 13px; line-height: 1.6; min-height: 100vh;
+}
+#app { max-width: 1100px; margin: 0 auto; padding: 10px; }
+#topbar {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  background: linear-gradient(180deg, #1f1f2c 0%, #1a1a24 100%);
+  border: 1px solid #2e2e3e; border-radius: 8px; padding: 10px 12px; margin-bottom: 10px;
+  align-items: center;
+}
+#topbar .stat {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 13px; color: #8a8aa0;
+  background: #16161f; border: 1px solid #262634;
+  border-radius: 6px; padding: 4px 10px;
+}
+#topbar .stat .ico { font-size: 13px; opacity: .85; }
+#topbar .stat b { color: #d4a843; font-variant-numeric: tabular-nums; }
+#main { display: flex; gap: 10px; align-items: flex-start; }
+#col-left { flex: 1 1 620px; min-width: 0; }
+#col-right { flex: 0 0 280px; }
+.panel {
+  background: #1c1c28; border: 1px solid #2e2e3e;
+  border-radius: 8px; padding: 10px 12px; margin-bottom: 10px;
+}
+.panel-title {
+  font-size: 13px; color: #d4a843; font-weight: 700;
+  letter-spacing: 2px; margin-bottom: 8px;
+  border-bottom: 1px solid #2e2e3e; padding-bottom: 6px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.panel-title .count { letter-spacing: 0; font-weight: 400; font-size: 11px; color: #6a6a80; }
+.disciple {
+  background: linear-gradient(180deg, #24242f 0%, #20202a 100%);
+  border: 1px solid #2e2e3e; border-left: 3px solid #2e2e3e;
+  border-radius: 6px; padding: 8px 10px; margin-bottom: 6px;
+  cursor: pointer; transition: all .15s; user-select: none;
+}
+.disciple:hover { background: #262633; border-top-color: #4a4a5e; border-right-color: #4a4a5e; border-bottom-color: #4a4a5e; }
+.disciple.selected {
+  background: #26222e;
+  border-top-color: #6a5528; border-right-color: #6a5528; border-bottom-color: #6a5528;
+  box-shadow: 0 0 10px rgba(212,168,67,.28);
+}
+.disciple.injured { opacity: .55; cursor: not-allowed; }
+.disciple.missing-card { cursor: default; opacity: .85; }
+.d-head { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.d-name { font-weight: 700; color: #e6e6f0; }
+.d-power { margin-left: auto; font-size: 11px; color: #8a8aa0; }
+.d-power b { color: #e6e6f0; }
+.realm-badge {
+  font-size: 11px; font-weight: 700; letter-spacing: 1px;
+  padding: 0 7px; border-radius: 3px;
+  border: 1px solid currentColor;
+  background: rgba(255,255,255,.045);
+  box-shadow: 0 0 6px -1px currentColor inset;
+}
+.tag-red { font-size: 10px; background: #4a2020; color: #e05555; padding: 1px 5px; border-radius: 3px; }
+.tag-sel { font-size: 10px; background: #3a2f14; color: #d4a843; padding: 1px 5px; border-radius: 3px; }
+.tag-miss { font-size: 10px; background: #3a2a3a; color: #b06fe0; padding: 1px 5px; border-radius: 3px; }
+.tag-mat { font-size: 10px; background: #3a2418; color: #e08a4a; padding: 1px 5px; border-radius: 3px; }
+.mat-short { font-size: 10px; color: #e05555; }
+.prog { display: flex; align-items: center; gap: 6px; margin-top: 5px; }
+.prog-label { font-size: 10px; color: #6a6a80; flex: 0 0 26px; }
+.prog-track { flex: 1; height: 7px; background: #15151d; border: 1px solid #262634; border-radius: 4px; overflow: hidden; }
+.prog-fill { height: 100%; border-radius: 3px; transition: width .35s ease; box-shadow: 0 0 6px -1px rgba(255,255,255,.25); }
+.prog-val { flex: 0 0 62px; text-align: right; font-size: 10px; color: #8a8aa0; font-variant-numeric: tabular-nums; }
+.d-meta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; font-size: 11px; color: #6a6a80; }
+.d-meta .equip { color: #b06fe0; }
+.team-info { font-size: 12px; color: #8a8aa0; margin-bottom: 6px; }
+.team-info b { color: #d4a843; }
+.team-info.dim { color: #5a5a70; }
+.team-bar-track { height: 6px; background: #15151d; border: 1px solid #262634; border-radius: 4px; overflow: hidden; margin-bottom: 10px; }
+.team-bar-fill { height: 100%; border-radius: 3px; transition: width .3s; }
+.dungeon {
+  background: #22222e; border: 1px solid #2e2e3e;
+  border-radius: 6px; padding: 8px 10px; margin-bottom: 6px;
+  transition: border-color .15s;
+}
+.dungeon:hover { border-color: #3e3e56; }
+.dungeon-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.dungeon-main { flex: 1; min-width: 200px; }
+.dungeon-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.dungeon-name { font-weight: 700; color: #e6e6f0; }
+.dungeon-diff { font-size: 11px; color: #8a8aa0; background: #1a1a24; border: 1px solid #2a2a38; padding: 0 6px; border-radius: 3px; }
+.dungeon-desc { font-size: 11px; color: #6a6a80; margin-top: 2px; }
+.dungeon-odds { display: flex; align-items: center; gap: 6px; margin-top: 5px; }
+.odds-track { flex: 1; height: 5px; background: #15151d; border-radius: 3px; overflow: hidden; }
+.odds-fill { height: 100%; border-radius: 3px; transition: width .3s; }
+.odds-text { font-size: 10px; min-width: 58px; text-align: right; }
+.loot-rates {
+  margin-top: 8px; padding-top: 6px;
+  border-top: 1px dashed #2e2e3e;
+  display: flex; flex-wrap: wrap; gap: 6px 10px;
+  font-size: 10px;
+}
+.loot-rates .rate-label { color: #5a5a70; }
+.rate-chip {
+  display: inline-flex; align-items: center; gap: 3px;
+  padding: 0 6px; border-radius: 3px;
+  border: 1px solid currentColor;
+  background: rgba(255,255,255,.03);
+  font-variant-numeric: tabular-nums;
+}
+.rate-chip .rate-pct { opacity: .75; font-size: 9px; }
+button {
+  font-family: inherit; font-size: 12px;
+  background: #2e2e42; color: #c8c8d4;
+  border: 1px solid #3e3e56; border-radius: 4px;
+  padding: 4px 12px; cursor: pointer; transition: all .15s;
+}
+button:hover:not(:disabled) { background: #3a3a52; border-color: #5a5a72; }
+button:disabled { opacity: .35; cursor: not-allowed; }
+button.btn-gold { background: #4a3a1a; border-color: #6a5528; color: #d4a843; }
+button.btn-gold:hover:not(:disabled) { background: #5a4820; }
+button.btn-red { background: #3a1e1e; border-color: #5a2e2e; color: #e05555; }
+button.btn-red:hover:not(:disabled) { background: #4a2626; }
+.loot-item {
+  background: #22222e; border: 1px solid #2e2e3e; border-left: 3px solid #2e2e3e;
+  border-radius: 6px; padding: 6px 10px; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.loot-info { flex: 1; min-width: 140px; }
+.loot-name { font-weight: 700; color: #e6e6f0; }
+.loot-type { font-size: 11px; margin-left: 6px; padding: 0 5px; border-radius: 3px; border: 1px solid currentColor; }
+.loot-rarity { font-size: 10px; margin-left: 4px; padding: 0 5px; border-radius: 3px; border: 1px solid currentColor; }
+.loot-owner { font-size: 11px; color: #5a5a70; display: block; }
+.loot-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+#log { max-height: 320px; overflow-y: auto; font-size: 12px; }
+.log-line { padding: 3px 0; border-bottom: 1px solid #1e1e2a; color: #8a8aa0; }
+.log-month { color: #4a4a5e; margin-right: 6px; font-size: 11px; display: inline-block; min-width: 28px; }
+.log-line.good { color: #5fb85f; }
+.log-line.bad { color: #e05555; }
+.log-line.warn { color: #d4a843; }
+.log-line.gold { color: #d4a843; font-weight: 700; }
+#event { display: none; margin-bottom: 10px; }
+.event-box {
+  background: linear-gradient(180deg, #241c28 0%, #1e1a24 100%);
+  border: 1px solid #5a3a5a; border-radius: 8px; padding: 12px 16px;
+  box-shadow: 0 0 20px -6px rgba(180,100,180,.4);
+  animation: evIn .25s ease;
+}
+@keyframes evIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+.event-title { font-size: 15px; color: #d4a843; font-weight: 700; margin-bottom: 6px; }
+.event-title .count { font-size: 12px; font-weight: 400; color: #8a8aa0; margin-left: 4px; }
+.event-desc { color: #a0a0b4; margin-bottom: 10px; }
+.event-options { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+
+/* ===== 待办事件列表（D2） ===== */
+.event-item { border-top: 1px solid #3a2a3a; padding: 10px 0 8px; }
+.event-item:first-of-type { border-top: none; padding-top: 2px; }
+.event-item-title { font-size: 13px; color: #e6e6f0; font-weight: 700; margin-bottom: 2px; }
+.event-item-desc { color: #a0a0b4; font-size: 12px; margin-bottom: 8px; }
+#footer {
+  display: flex; gap: 10px; margin-top: 10px;
+  position: sticky; bottom: 0;
+  background: #12121a; padding: 8px 0;
+}
+#footer button { padding: 8px 20px; font-size: 13px; }
+.recruit-item {
+  background: #22222e; border: 1px solid #2e2e3e; border-left: 3px solid #2e2e3e;
+  border-radius: 6px; padding: 6px 8px; margin-bottom: 6px;
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+}
+.recruit-info { font-size: 12px; }
+.recruit-info b { color: #e6e6f0; }
+.recruit-info .sub { color: #8a8aa0; font-size: 11px; }
+.empty { color: #5a5a70; font-size: 12px; padding: 10px 0; text-align: center; }
+.good { color: #5fb85f; }
+.bad { color: #e05555; }
+.warn { color: #d4a843; }
+.grant-picker {
+  background: linear-gradient(180deg, #2a1e2e 0%, #221a26 100%);
+  border: 1px solid #5a3a5a; border-radius: 6px;
+  padding: 8px 10px; margin-bottom: 8px;
+}
+.grant-picker-title { font-size: 12px; color: #d4a843; margin-bottom: 6px; }
+.grant-picker-list { display: flex; flex-wrap: wrap; gap: 4px; }
+
+/* 宗门大比 */
+#tournament { display: none; margin-bottom: 10px; }
+.tournament-box {
+  background: linear-gradient(180deg, #1e2430 0%, #191f28 100%);
+  border: 1px solid #3a5a7a;
+  border-radius: 8px; padding: 12px 16px;
+  box-shadow: 0 0 22px -6px rgba(90,159,224,.5);
+  animation: evIn .25s ease;
+}
+.tournament-title {
+  font-size: 15px; color: #5a9fe0; font-weight: 700;
+  margin-bottom: 6px; display: flex; align-items: center; gap: 8px;
+}
+.tournament-desc { color: #a0a0b4; margin-bottom: 10px; font-size: 12px; }
+.enemy-team {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px;
+}
+.enemy-card {
+  background: #241c1c; border: 1px solid #5a3a3a;
+  border-radius: 6px; padding: 6px 10px;
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px;
+}
+.enemy-card b { color: #e6e6f0; }
+.enemy-card .sub { color: #8a8aa0; font-size: 11px; }
+.duel-row {
+  display: flex; align-items: center; gap: 10px;
+  background: #1c2030; border: 1px solid #2e3e56;
+  border-radius: 6px; padding: 6px 10px; margin-bottom: 5px;
+  font-size: 12px;
+}
+.duel-side { flex: 1; }
+.duel-vs { color: #5a5a70; font-weight: 700; }
+.duel-winner { color: #5fb85f; font-weight: 700; }
+.duel-loser { color: #8a8aa0; }
+.duel-tag {
+  font-size: 10px; padding: 1px 5px; border-radius: 3px;
+  background: #3a2f14; color: #d4a843; margin-left: 4px;
+}
+.duel-tag.dodge { background: #14303a; color: #4aadd0; }
+.battle-log {
+  max-height: 220px; overflow-y: auto;
+  background: #14181e; border: 1px solid #2e2e3e;
+  border-radius: 4px; padding: 6px 10px; margin-bottom: 10px;
+  font-size: 11px; color: #8a8aa0;
+}
+@media (max-width: 760px) {
+  #main { flex-direction: column; }
+  #col-right { flex: 1 1 auto; width: 100%; }
+  .d-power { margin-left: 0; width: 100%; }
+}
+/* 宗门大比预告条 */
+#tournament-preview {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: #8a8aa0;
+  background: linear-gradient(180deg, #1a2028 0%, #161a20 100%);
+  border: 1px solid #2e3e56;
+  border-radius: 6px; padding: 6px 12px; margin-bottom: 10px;
+}
+#tournament-preview .ico { font-size: 13px; }
+#tournament-preview b { color: #5a9fe0; }
+#tournament-preview.soon {
+  border-color: #5a8a3a;
+  background: linear-gradient(180deg, #1a2418 0%, #161e14 100%);
+}
+#tournament-preview.soon b { color: #5fb85f; }
+#tournament-preview.hidden { display: none; }
+/* ===== Tab 子界面 ===== */
+.sub-tabs {
+  display: flex; gap: 4px;
+  border-bottom: 1px solid #2e2e3e;
+  margin-bottom: 10px;
+}
+.sub-tab {
+  background: transparent;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  color: #6a6a80;
+  padding: 6px 14px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all .15s;
+  position: relative;
+  top: 1px;
+}
+.sub-tab:hover { color: #c8c8d4; background: #22222e; }
+.sub-tab.active {
+  color: #d4a843;
+  background: #1c1c28;
+  border-color: #2e2e3e;
+  border-bottom-color: #1c1c28;
+  font-weight: 700;
+}
+.sub-panel { display: block; }
+.sub-panel.hidden { display: none; }
+
+/* 三个 tab 内容区统一高度，避免切换时页面跳动 */
+#tab-disciples,
+#tab-dungeons,
+#tab-storage {
+  min-height: 420px;
+  max-height: 620px;
+  overflow-y: auto;
+  padding-right: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: #3e3e56 #1a1a24;
+}
+#tab-disciples::-webkit-scrollbar,
+#tab-dungeons::-webkit-scrollbar,
+#tab-storage::-webkit-scrollbar { width: 6px; }
+#tab-disciples::-webkit-scrollbar-track,
+#tab-dungeons::-webkit-scrollbar-track,
+#tab-storage::-webkit-scrollbar-track { background: #1a1a24; border-radius: 3px; }
+#tab-disciples::-webkit-scrollbar-thumb,
+#tab-dungeons::-webkit-scrollbar-thumb,
+#tab-storage::-webkit-scrollbar-thumb { background: #3e3e56; border-radius: 3px; }
+#tab-disciples::-webkit-scrollbar-thumb:hover,
+#tab-dungeons::-webkit-scrollbar-thumb:hover,
+#tab-storage::-webkit-scrollbar-thumb:hover { background: #5a5a72; }
+
+/* ===== 秘境：无法胜任 ===== */
+.dungeon.unwinnable {
+  opacity: 0.55;
+  border-color: #3a2e2e;
+}
+.dungeon.unwinnable .dungeon-name {
+  color: #8a8aa0;
+}
+
+/* ===== 秘境：本月已探尽 ===== */
+.dungeon-runs { font-size: 11px; font-variant-numeric: tabular-nums; }
+.dungeon.cleared {
+  opacity: 0.5;
+  border-color: #33283a;
+}
+.dungeon.cleared .dungeon-name {
+  color: #8a8aa0;
+  text-decoration: line-through;
+}
+
+.dispatch-hint {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; margin-top: 10px; padding: 8px 10px;
+  background: linear-gradient(180deg, #2a2416 0%, #201c12 100%);
+  border: 1px solid #6a5528;
+  border-radius: 6px;
+  position: sticky; bottom: 0;
+}
+.dispatch-hint-text { font-size: 12px; color: #8a8aa0; }
+.dispatch-hint-text b { color: #d4a843; }
+.dispatch-hint button { font-size: 12px; padding: 5px 14px; }
+
+/* ===== 弟子背包 / 装备 / 功法 展开详情 ===== */
+.bag-btn {
+  font-size: 10px; padding: 1px 7px;
+  background: #26222e; border: 1px solid #5a3a5a; color: #b06fe0;
+  border-radius: 3px; cursor: pointer;
+}
+.bag-btn:hover { background: #32263a; border-color: #7a4a7a; }
+.equip { color: #b06fe0; }
+.disciple-detail {
+  background: linear-gradient(180deg, #1e1c26 0%, #1a1822 100%);
+  border: 1px solid #5a3a5a; border-left: 3px solid #7a4a8a; border-radius: 6px;
+  padding: 8px 10px;
+  /* 紧贴展开它的那张卡片下方：负上边距吃掉卡片的 margin-bottom */
+  margin: -4px 0 8px 14px;
+}
+.detail-head {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  border-bottom: 1px solid #2e2e3e; padding-bottom: 6px; margin-bottom: 8px;
+}
+.detail-head .sub { font-size: 11px; }
+.detail-slots { margin-bottom: 8px; }
+.slot-row {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 4px 0; border-bottom: 1px dashed #262634;
+}
+.slot-row:last-child { border-bottom: none; }
+.slot-label {
+  flex: 0 0 64px; font-size: 11px; color: #8a8aa0; letter-spacing: 1px;
+}
+.slot-content { flex: 1; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.slot-content button { font-size: 11px; padding: 1px 8px; }
+.slot-empty { color: #4a4a5e; font-size: 11px; }
+.detail-backpack { margin-top: 2px; }
+.detail-backpack .sub { font-size: 10px; }
+/* ===== 天赋芯片（招募卡 / 弟子卡 / 详情共用） ===== */
+.trait-chip {
+  display: inline-block; font-size: 11px;
+  padding: 0 2px; margin-right: 4px;
+  letter-spacing: .5px; cursor: help; white-space: nowrap;
+}
+.trait-chip.is-hidden { color: #4a4a5e; cursor: default; }
+.trait-chip.is-more { color: #6a6a80; cursor: default; }
+.trait-row { margin-top: 3px; line-height: 1.5; }
+.trait-detail-item { display: inline-flex; align-items: baseline; gap: 4px; margin-right: 14px; }
+.trait-detail-desc { font-size: 11px; color: #8a8aa0; }
+
+.hidden-hint {
+  margin-top: 6px; padding: 6px 10px;
+  background: #1a1420; border: 1px dashed #4a3a5a;
+  border-radius: 4px; font-size: 11px; color: #8a6aa0;
+}
+
+/* ==========================================================================
+ * 长老 Tab（阶段四）
+ * ========================================================================== */
+.elder-section-title {
+  margin: 12px 0 6px; font-size: 12px; letter-spacing: 1px; color: #8a8aa0;
+  border-bottom: 1px solid #2e2e3e; padding-bottom: 4px;
+}
+.elder-help {
+  background: #1a1a24; border: 1px solid #2a2a38; border-left: 3px solid #5a9fe0;
+  border-radius: 6px; padding: 8px 10px; font-size: 12px; color: #c8c8d4; line-height: 1.7;
+}
+.elder-help-title { font-weight: 700; color: #8fd45f; margin-bottom: 2px; }
+.elder-help .sub { font-size: 11px; color: #6a6a80; }
+.elder-card {
+  background: linear-gradient(180deg, #22222e 0%, #1e1e28 100%);
+  border: 1px solid #2e2e3e; border-left: 3px solid #8a8aa0;
+  border-radius: 6px; padding: 8px 10px; margin-bottom: 8px;
+}
+.elder-members { margin-top: 6px; }
+.elder-member {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  background: #1c1c26; border: 1px solid #262634; border-left: 3px solid #8a8aa0;
+  border-radius: 4px; padding: 4px 8px; margin-bottom: 4px;
+}
+.elder-member .sub { font-size: 11px; color: #8a8aa0; }
+.assign-grid { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+.assign-col { flex: 1 1 140px; min-width: 120px; }
+.assign-title { font-size: 11px; color: #d4a843; margin-bottom: 4px; }
+
+/* 长老月报（汇总层 / 警告层 / 详情层） */
+.elder-report {
+  margin-top: 8px; padding: 6px 8px;
+  background: #1a1a24; border: 1px solid #2a2a38; border-radius: 4px; font-size: 11px;
+}
+.elder-report.dim { color: #5a5a70; }
+.elder-report-head {
+  display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap;
+  color: #8fd45f; font-weight: 700; margin-bottom: 3px;
+}
+.elder-report-head .sub { font-weight: 400; color: #8a8aa0; }
+.elder-report-body { display: flex; gap: 12px; flex-wrap: wrap; color: #c8c8d4; }
+.elder-report-body .sub { color: #6a6a80; }
+.elder-warn { margin-top: 4px; color: #d4a843; line-height: 1.6; }
+.elder-gift { margin-top: 3px; color: #b06fe0; }
+.elder-detail {
+  margin-top: 5px; padding-top: 4px; border-top: 1px dashed #262634;
+  color: #8a8aa0; line-height: 1.7;
+}
+
+/* ==========================================================================
+ * 调试面板
+ * ========================================================================== */
+.dbg-panel {
+  margin-top: 10px; padding: 10px 12px;
+  background: #14141c; border: 1px solid #3a2e14; border-left: 3px solid #d4a843;
+  border-radius: 6px;
+}
+.dbg-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+.dbg-title { font-weight: 700; color: #d4a843; letter-spacing: 1px; }
+.dbg-head .sub { font-size: 11px; color: #6a6a80; }
+.dbg-stats { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 10px; }
+.dbg-stat { font-size: 12px; color: #8a8aa0; }
+.dbg-stat-label { color: #5a5a70; margin-right: 4px; }
+.dbg-row {
+  display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+  padding: 5px 0; border-bottom: 1px dashed #24242e;
+}
+.dbg-row button { font-size: 11px; padding: 2px 9px; }
+.dbg-row .sub { font-size: 11px; color: #6a6a80; }
+.dbg-label { flex: 0 0 68px; font-size: 11px; color: #8a8aa0; letter-spacing: 1px; }
+.dbg-section-title {
+  margin: 12px 0 6px; font-size: 12px; letter-spacing: 1px; color: #8a8aa0;
+  border-bottom: 1px solid #2e2e3e; padding-bottom: 4px;
+}
+.dbg-list { max-height: 320px; overflow-y: auto; }
+.dbg-disciple {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  padding: 4px 6px; border-bottom: 1px dashed #24242e;
+}
+.dbg-disciple .sub { font-size: 11px; color: #8a8aa0; }
+.dbg-actions { margin-left: auto; display: flex; gap: 4px; flex-wrap: wrap; }
+.dbg-actions button { font-size: 11px; padding: 1px 8px; }
